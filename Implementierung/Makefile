@@ -3,7 +3,7 @@ CFLAGS=-O0
 
 all: main
 main: main.c curveM.S
-	$(CC) $(CFLAGS) -no-pie -o $@ $^
+	$(CC) $(CFLAGS)  -no-pie  -o $@ $^ -lm
 clean:
 	rm -f main
 
