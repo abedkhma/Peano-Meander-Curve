@@ -5,7 +5,6 @@
 #include<string.h>
 #include<stdlib.h>
 #include<stdbool.h>
-#include"svg.h"
 
 //assembly functions with its args
 extern void peano_meander(u_int64_t degree, u_int64_t *x, u_int64_t *y);
