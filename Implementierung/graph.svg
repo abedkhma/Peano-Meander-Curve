@@ -1,0 +1,9 @@
+<svg viewBox="800 -1000 1100 1100" xmlns="http://www.w3.org/2000/svg"><line x1="0" y1="0" x2="0" y2="-450" stroke="black" transform="scale (-1, 1)" transform-origin="center" />
+<line x1="0" y1="-450" x2="0" y2="-900" stroke="black" transform="scale (-1, 1)" transform-origin="center" />
+<line x1="0" y1="-900" x2="-450" y2="-900" stroke="black" transform="scale (-1, 1)" transform-origin="center" />
+<line x1="-450" y1="-900" x2="-900" y2="-900" stroke="black" transform="scale (-1, 1)" transform-origin="center" />
+<line x1="-900" y1="-900" x2="-900" y2="-450" stroke="black" transform="scale (-1, 1)" transform-origin="center" />
+<line x1="-900" y1="-450" x2="-450" y2="-450" stroke="black" transform="scale (-1, 1)" transform-origin="center" />
+<line x1="-450" y1="-450" x2="-450" y2="0" stroke="black" transform="scale (-1, 1)" transform-origin="center" />
+<line x1="-450" y1="0" x2="-900" y2="0" stroke="black" transform="scale (-1, 1)" transform-origin="center" />
+</svg>
