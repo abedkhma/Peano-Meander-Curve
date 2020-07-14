@@ -4,9 +4,6 @@
     
     x: .long 0,1,1,0,0,1,2,2,2
     y: .long 0,0,1,1,2,2,2,1,0 
-.bss  
-    originalx: .int 0
-    originaly: .int 0
 .text
 .global peano_meander
 
