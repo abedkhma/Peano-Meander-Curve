@@ -2,8 +2,8 @@
 
 .section .rodata
     
-    x: .long 0,1,1,0,0,1,2,2,2
-    y: .long 0,0,1,1,2,2,2,1,0 
+    x: .long 0,0,0,1,2,2,1,1,2
+    y: .long 0,1,2,2,2,1,1,0,0 
 .text
 .global peano_meander
 
@@ -102,89 +102,88 @@ in_index:
     
 
 zerosquare:
+    mov r11,r8
+    mov r8,r9
+    mov r9,r11
     jmp loop  
 
 firstsquare:
     mov r11,r8
     mov r8,r9
     mov r9,r11
-    add r8,r15
+    add r9,r15
     jmp loop
 
 secondsquare:
-    mov r11,r8
-    mov r8,r9
-    mov r9,r11
-    add r8,r15
+    add r9,r15
     add r9,r15
     jmp loop
 
 thirdsquare:
-    mov r11,r15
-    dec r11
-    sub r11,r8
-    mov r8,r11
-    mov r11,r15
-    dec r11
-    sub r11,r9
-    mov r9,r11
+    add r8,r15
     add r9,r15
-    jmp loop   
-    
+    add r9,r15
+    jmp loop
+
+
 fourthsquare:
-    mov r11,r15
-    add r11,r15
-    add r9,r11
-    jmp loop  
+    add r8,r15
+    add r8,r15
+    add r9,r15
+    add r9,r15
+    jmp loop
+
+
+
 
 fifthsquare:
     mov r11,r15
-    add r8,r11
-    add r11,r15
-    add r9,r11
-    jmp loop  
-
-sixthsquare:
-    mov r11,r15
-    add r11,r15
-    add r9,r11
-    add r8,r11
-    jmp loop  
-
-seventhsquare:
-    mov r11,r8 // for x
-    mov r8,r9
-    mov r9,r11
-    mov r11,r15
     dec r11
     sub r11,r8
     mov r8,r11
+    add r8,r15
+    add r8,r15
     mov r11,r15
-    add r11,r15
-    add r8,r11
-    mov r11,r15 //for y
     dec r11
     sub r11,r9
     mov r9,r11
-    mov r11,r15
     add r9,r15
     jmp loop  
 
-eigthsquare:
-   mov r11,r8 // for x
+sixthsquare:
+    mov r11,r8
     mov r8,r9
     mov r9,r11
     mov r11,r15
     dec r11
     sub r11,r8
     mov r8,r11
+    add r8,r15
     mov r11,r15
-    add r11,r15
-    add r8,r11
-    mov r11,r15 //for y
     dec r11
     sub r11,r9
-    mov r9,r11     
+    mov r9,r11
+    add r9,r15
+    jmp loop  
+
+seventhsquare:
+    mov r11,r8
+    mov r8,r9
+    mov r9,r11
+    mov r11,r15
+    dec r11
+    sub r11,r8
+    mov r8,r11
+    add r8,r15
+    mov r11,r15
+    dec r11
+    sub r11,r9
+    mov r9,r11
+    jmp loop   
+
+eigthsquare:
+    add r8,r15
+    add r8,r15    
     jmp loop  
 
 illegal:
