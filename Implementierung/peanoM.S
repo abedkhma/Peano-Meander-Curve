@@ -8,11 +8,13 @@
 .global peano_meander
 
 peano_meander:
+    mov r10,rdx
+    cmp rdi,1
+    je onlyfirst
     push rbx
     push rax
     push rsi
     push rdx
-    mov r10,rdx
     xor r12,r12 //our counter = 0
     mov r14,16
     mov r13,rdi
@@ -100,6 +102,24 @@ in_index:
     pop r12
     ret
     
+onlyfirst:
+    mov r11,0
+    xor rcx,rcx
+    loopcopy:
+    cmp r11,9
+    je endcopy
+    mov ecx,dword ptr [x+4*r11]
+    mov [rsi],rcx
+    xor rcx,rcx
+    mov ecx,dword ptr [y+4*r11]
+    mov [r10],rcx
+    inc r11
+    add rsi,8
+    add r10,8
+    jmp loopcopy
+    endcopy:
+    ret
+
 
 zerosquare:
     mov r11,r8
