@@ -1,5 +1,4 @@
-//ALGORITHM ADAPTED AND INSPITED BY Marcin Chwedczuk : https://marcin-chwedczuk.github.io/iterative-algorithm-for-drawing-hilbert-curve
-//CODE IN C AND ASSEMBLY IS WRITTEN 100% BY US
+
 
 #include <stdio.h>
 #include <stdlib.h>
