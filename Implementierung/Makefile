@@ -1,5 +1,5 @@
 # Add additional compiler flags here
-CFLAGS=-O0 -g
+CFLAGS=-O2 -g
 
 all: main
 main: main.c peanoM.S
@@ -7,3 +7,4 @@ main: main.c peanoM.S
 clean:
 	rm -f main
 
+#-no-pie : non representable section output
