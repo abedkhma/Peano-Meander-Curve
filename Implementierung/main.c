@@ -51,7 +51,7 @@ int main(int argc, char** argv) {
     fprintf(file,"</svg>");
     fclose(file);
     free(x);
-    free(y);
+    free(y); 
     return 0;
 }
  

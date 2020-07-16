@@ -24,9 +24,11 @@ peano_meander:
     mov rax,9
     mul r13
     mov r13,rax // r13 has the end loop
+    dec r13
     loopmain:
     cmp r13,r12
     je endmain
+    continue:
     mov rcx,r12
     inc r12
     call in_index
@@ -47,6 +49,7 @@ peano_meander:
 
 // takes number in rcx, returns its coordinates in (r8,r9), returns both -1 if it wasnt legal point
 in_index:
+    push r11
     push r12
     push r13
     push r14
@@ -100,6 +103,7 @@ in_index:
     pop r14
     pop r13
     pop r12
+    pop r11
     ret
     
 onlyfirst:
@@ -214,6 +218,7 @@ illegal:
     pop r14
     pop r13
     pop r12
+    pop r11
     ret
 end:
     pop r10
@@ -221,6 +226,7 @@ end:
     pop r14
     pop r13
     pop r12
+    pop r11
     ret    
 
 
@@ -228,6 +234,9 @@ end:
 //returns result in rax
 
 power: //first argument it takes is the base the second is the power return in rax
+    cmp r13,0
+    je endnull
+    push r11
     push rbx
     push r10
     mov r10,r14
@@ -242,4 +251,8 @@ power: //first argument it takes is the base the second is the power return in r
     endpower:
     pop r10
     pop rbx
+    pop r11
+    ret
+    endnull:
+    mov rax,1
     ret
