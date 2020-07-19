@@ -98,8 +98,6 @@ in_index:
     xor r10,r10
     mov r10,rcx //r10 is our index
     and r10,15
-    cmp r10,8
-    jg illegal
     push rcx
     xor rcx,rcx
     mov ecx,dword ptr [x+4*r10] //r8,r9 is our original x and y
@@ -137,7 +135,6 @@ in_index:
     je seventhsquare
     cmp r10,8
     je eigthsquare
-    jg illegal
     pop r10
     pop r15
     pop r14
@@ -167,35 +164,27 @@ onlyfirst:
 
 
 zerosquare:
-    mov r11,r8
-    mov r8,r9
-    mov r9,r11
+    xchg r8,r9
     jmp loop  
 
 firstsquare:
-    mov r11,r8
-    mov r8,r9
-    mov r9,r11
+    xchg r8,r9
     add r9,r15
     jmp loop
 
 secondsquare:
-    add r9,r15
-    add r9,r15
+    lea r9,[r9+2*r15]
     jmp loop
 
 thirdsquare:
     add r8,r15
-    add r9,r15
-    add r9,r15
+    lea r9,[r9+2*r15]
     jmp loop
 
 
 fourthsquare:
-    add r8,r15
-    add r8,r15
-    add r9,r15
-    add r9,r15
+    lea r8,[r8+2*r15]
+    lea r9,[r9+2*r15]
     jmp loop
 
 
@@ -206,8 +195,7 @@ fifthsquare:
     dec r11
     sub r11,r8
     mov r8,r11
-    add r8,r15
-    add r8,r15
+    lea r8,[r8+2*r15]
     mov r11,r15
     dec r11
     sub r11,r9
@@ -216,30 +204,23 @@ fifthsquare:
     jmp loop  
 
 sixthsquare:
-    mov r11,r8
-    mov r8,r9
-    mov r9,r11
-    mov r11,r15
+    xchg r8,r9
+    lea r11,[2*r15]
     dec r11
     sub r11,r8
     mov r8,r11
-    add r8,r15
-    mov r11,r15
+    lea r11,[2*r15]
     dec r11
     sub r11,r9
     mov r9,r11
-    add r9,r15
     jmp loop  
 
 seventhsquare:
-    mov r11,r8
-    mov r8,r9
-    mov r9,r11
-    mov r11,r15
+    xchg r8,r9
+    lea r11,[2*r15]
     dec r11
     sub r11,r8
     mov r8,r11
-    add r8,r15
     mov r11,r15
     dec r11
     sub r11,r9
@@ -247,21 +228,10 @@ seventhsquare:
     jmp loop   
 
 eigthsquare:
-    add r8,r15
-    add r8,r15    
+    lea r8,[r8+2*r15]    
     jmp loop  
 
-illegal:
-    mov r8,-1
-    mov r9,-1
-    pop r10
-    pop r15
-    pop r14
-    pop r13
-    pop r12
-    pop r11
-    pop rcx
-    ret
+
 end:
     pop r10
     pop r15
