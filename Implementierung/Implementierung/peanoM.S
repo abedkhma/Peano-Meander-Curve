@@ -31,12 +31,15 @@ peano_meander:
     xor r13,r13 //n
     xor r11,r11 //val
     xor rcx,rcx //our counter that we need
+
     loopmain:
     cmp r12,-1
     je endmain
+
     continue:
     mov r11,rcx
     xor r13,r13
+
     checkfirstfour: //we find the 4 bits where we can still add 1
     mov rbx,r11
     and rbx,0x8
@@ -45,6 +48,7 @@ peano_meander:
     inc r13 //and save how many 4 bits we moved in r13
     shr r11,4
     jmp checkfirstfour
+
     ifstat: //here we check if we can fit in our first 4 bit one more number
     cmp r13,0
     jne contloop    
@@ -56,6 +60,7 @@ peano_meander:
     dec r12
     inc rcx
     jmp loopmain
+
     contloop:
     call in_index //if we cant fit, then we already have 8 in first 4 bits,so we cann it on this index
     mov [r10],r9
@@ -74,6 +79,7 @@ peano_meander:
     pop r15
     dec r12
     jmp loopmain
+    
     endmain:
     pop rdx
     pop rsi
@@ -147,6 +153,7 @@ in_index:
 onlyfirst:
     mov r11,0
     xor rcx,rcx
+
     loopcopy:
     cmp r11,9
     je endcopy
@@ -159,6 +166,7 @@ onlyfirst:
     add rsi,8
     add r10,8
     jmp loopcopy
+
     endcopy:
     ret
 
@@ -255,17 +263,20 @@ power: //first argument it takes is the base the second is the power return in r
     mov r10,r14
     mov r11,r13
     mov rax,r10
+
     looppower:
     cmp r11,1
     je endpower
     mul r10
     dec r11
     jmp looppower
+
     endpower:
     pop r10
     pop rbx
     pop r11
     ret
+    
     endnull:
     mov rax,1
     ret
