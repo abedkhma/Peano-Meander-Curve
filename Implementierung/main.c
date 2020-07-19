@@ -7,6 +7,7 @@
 #include<string.h>
 #include<stdlib.h>
 #include<stdbool.h>
+#include<time.h>
 
 //assembly functions with its args
 extern void peano_meander(u_int64_t degree, u_int64_t *x, u_int64_t *y);
@@ -29,8 +30,32 @@ int main(int argc, char** argv) {
     double squares = pow(base,(2*n));;
     x =  malloc((squares) * sizeof(u_int64_t));
     y =  malloc((squares) * sizeof(u_int64_t)); 
-    peano_meander(n,x,y);
+   
+   // -----------------------Start-Zeitmessung----------------------------------------
+    struct timespec start;
+    struct timespec end;
+
+    if(clock_gettime(CLOCK_MONOTONIC, &start)){
+    printf("ERROR: start time");
+    return 1;
+    }
+
+    	peano_meander(n,x,y);
+
+    if(clock_gettime(CLOCK_MONOTONIC, &end)){
+        printf("ERROR: end time");
+        return 1;
+    }
+    
+
+    double time = end.tv_sec - start.tv_sec + 1e-9 *
+        (end.tv_nsec - start.tv_nsec);
+    
+    printf("the time is: %f \n", time);
+
+    // -----------------------End-Zeitmessung----------------------------------------   
     // printing the values of the pointer
+    
     FILE *file = fopen("graph.svg", "w");
     if (file == NULL)
     {
@@ -48,6 +73,7 @@ int main(int argc, char** argv) {
     tempy2 = y[i+1]*(900/sqrtpoints) * -1;
     fprintf(file, "<line x1=\"%ld\" y1=\"%ld\" x2=\"%ld\" y2=\"%ld\" stroke=\"black\" transform=\"scale (-1, 1)\" transform-origin=\"center\" />\n",tempx1,tempy1,tempx2,tempy2);
     }
+   
     fprintf(file,"</svg>");
     fclose(file);
     free(x);

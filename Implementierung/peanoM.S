@@ -11,44 +11,84 @@ peano_meander:
     mov r10,rdx
     cmp rdi,1
     je onlyfirst
+    push r15
+    push r14
+    push r13
+    push r12
     push rbx
     push rax
     push rsi
     push rdx
-    xor r12,r12 //our counter = 0
-    mov r14,16
-    mov r13,rdi
-    dec r13
+    mov r14,3 //calculating how many time to loop
+    mov rax,rdi
+    shl rax,1
+    mov r13,rax  
     call power
-    mov r13,rax
-    mov rax,9
-    mul r13
-    mov r13,rax // r13 has the end loop
-    dec r13
+    mov r12,rax  //r12 has now number of all points which is 3^(2*n)
+    dec r12 //r12 has end loop
+    xor r15,r15 //v
+    xor r14,r14 //lowbits
+    xor r13,r13 //n
+    xor r11,r11 //val
+    xor rcx,rcx //our counter that we need
     loopmain:
-    cmp r13,r12
+    cmp r12,-1
     je endmain
     continue:
-    mov rcx,r12
-    inc r12
-    call in_index
-    cmp r8,-1
-    je loopmain
+    mov r11,rcx
+    xor r13,r13
+    checkfirstfour: //we find the 4 bits where we can still add 1
+    mov rbx,r11
+    and rbx,0x8
+    cmp rbx,0 
+    jle ifstat
+    inc r13 //and save how many 4 bits we moved in r13
+    shr r11,4
+    jmp checkfirstfour
+    ifstat: //here we check if we can fit in our first 4 bit one more number
+    cmp r13,0
+    jne contloop    
+    call in_index //if yes, we find our point in this specific index
     mov [r10],r9
     add r10,8
     mov [rsi],r8
     add rsi,8
+    dec r12
+    inc rcx
+    jmp loopmain
+    contloop:
+    call in_index //if we cant fit, then we already have 8 in first 4 bits,so we cann it on this index
+    mov [r10],r9
+    add r10,8
+    mov [rsi],r8
+    add rsi,8
+    mov rax,4
+    mul r13
+    push r15
+    mov r15,rcx
+    mov rcx,rax
+    shr r15,cl  //shifted left 4*n (num of bits) till we get to 4 bits which are less than 8
+    inc r15
+    shl r15,cl //filled cl bits with 9 to startover after i incremented our first 4 bits
+    mov rcx,r15
+    pop r15
+    dec r12
     jmp loopmain
     endmain:
     pop rdx
     pop rsi
     pop rax
     pop rbx
+    pop r12
+    pop r13
+    pop r14
+    pop r15
     ret
 
 
 // takes number in rcx, returns its coordinates in (r8,r9), returns both -1 if it wasnt legal point
 in_index:
+    push rcx
     push r11
     push r12
     push r13
@@ -104,6 +144,7 @@ in_index:
     pop r13
     pop r12
     pop r11
+    pop rcx
     ret
     
 onlyfirst:
@@ -219,6 +260,7 @@ illegal:
     pop r13
     pop r12
     pop r11
+    pop rcx
     ret
 end:
     pop r10
@@ -227,6 +269,7 @@ end:
     pop r13
     pop r12
     pop r11
+    pop rcx
     ret    
 
 
