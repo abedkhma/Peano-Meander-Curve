@@ -20,8 +20,8 @@ int main(int argc, char** argv) {
     }
     
     int n = atoi(argv[1]);
-    if (n<1){
-        printf("The number must be Positive and greater than 0.\n");
+    if (n<1 || n>8){
+        printf("The number must be between 1 and 8 (included)\n");
         return 1;
     }
     //--------------------------End-Checking-for-Right-Input-----------------------------
