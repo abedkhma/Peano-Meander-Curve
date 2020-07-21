@@ -11,35 +11,22 @@ peano_meander:
     mov r10,rdx
     cmp rdi,1
     je onlyfirst
-    push r15
-    push r14
-    push r13
-    push r12
     push rbx
-    push rax
-    push rsi
-    push rdx
+ //pushing the calee saved registers cause i used them
     mov r14,3 //calculating how many time to loop
     mov rax,rdi
     shl rax,1
     mov r13,rax  
     call power
     mov r12,rax  //r12 has now number of all points which is 3^(2*n)
-    dec r12 //r12 has end loop
-    xor r15,r15 //v
-    xor r14,r14 //lowbits
-    xor r13,r13 //n
-    xor r11,r11 //val
-    xor rcx,rcx //our counter that we need
-
-    loopmain:
+    dec r12 //r12 numbers we DONT NEED
+    xor rcx,rcx //numbers we NEED
+    loopmain: //here starts our algorithm for jumping over numbers that we dont need
     cmp r12,-1
     je endmain
-
     continue:
     mov r11,rcx
     xor r13,r13
-
     checkfirstfour: //we find the 4 bits where we can still add 1
     mov rbx,r11
     and rbx,0x8
@@ -48,7 +35,6 @@ peano_meander:
     inc r13 //and save how many 4 bits we moved in r13
     shr r11,4
     jmp checkfirstfour
-
     ifstat: //here we check if we can fit in our first 4 bit one more number
     cmp r13,0
     jne contloop    
@@ -60,7 +46,6 @@ peano_meander:
     dec r12
     inc rcx
     jmp loopmain
-
     contloop:
     call in_index //if we cant fit, then we already have 8 in first 4 bits,so we cann it on this index
     mov [r10],r9
@@ -79,26 +64,16 @@ peano_meander:
     pop r15
     dec r12
     jmp loopmain
-    
     endmain:
-    pop rdx
-    pop rsi
-    pop rax
     pop rbx
-    pop r12
-    pop r13
-    pop r14
-    pop r15
     ret
 
 
 // takes number in rcx, returns its coordinates in (r8,r9), returns both -1 if it wasnt legal point
 in_index:
     push rcx
-    push r11
     push r12
     push r13
-    push r14
     push r15
     push r10
     xor r10,r10
@@ -123,7 +98,7 @@ in_index:
     call power //len saved in rax
     mov r15,rax
     inc r13
-    cmp r10,0
+    cmp r10,0 //looking which square do we need
     je zerosquare
     cmp r10,1
     je firstsquare
@@ -143,14 +118,12 @@ in_index:
     je eigthsquare
     pop r10
     pop r15
-    pop r14
     pop r13
     pop r12
-    pop r11
     pop rcx
     ret
     
-onlyfirst:
+onlyfirst: //when the user enters 1, it comes here and copied from the .rodata that we have
     mov r11,0
     xor rcx,rcx
 
@@ -170,7 +143,7 @@ onlyfirst:
     endcopy:
     ret
 
-
+//all the squares with its own offsets
 zerosquare:
     xchg r8,r9
     jmp loop  
@@ -239,14 +212,12 @@ eigthsquare:
     lea r8,[r8+2*r15]    
     jmp loop  
 
-
+// end of squares
 end:
     pop r10
     pop r15
-    pop r14
     pop r13
     pop r12
-    pop r11
     pop rcx
     ret    
 
