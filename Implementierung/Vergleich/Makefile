@@ -2,7 +2,7 @@
 CFLAGS=-O2 -g
 LDLIBS = -lm
 all: cimp 
-main: cimp.c 
+main: cimp.c peano.c
 	$(CC) $(CFLAGS)   -o $@
 clean:
 	rm -f main
