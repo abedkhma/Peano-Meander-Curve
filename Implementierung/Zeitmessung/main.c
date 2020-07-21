@@ -74,10 +74,10 @@ int main(int argc, char** argv) {
 
     double sqrtpoints = sqrt(squares) - 1; // number of points on each axis
     fprintf(file,"<svg viewBox=\"800 -1000 1100 1100\" xmlns=\"http://www.w3.org/2000/svg\">");
-
+    u_int64_t tempx1,tempy1,tempx2,tempy2;
     for (int i = 0;i<squares-1;i++)
     {
-    u_int64_t tempx1,tempy1,tempx2,tempy2;
+    
     tempx1 = x[i]*(900/sqrtpoints) * -1;
     tempy1 =y[i]*(900/sqrtpoints) * -1;
     tempx2 =x[i+1]*(900/sqrtpoints) * -1;
