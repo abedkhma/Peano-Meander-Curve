@@ -52,8 +52,8 @@ peano_meander:
     add r10,8
     mov [rsi],r8
     add rsi,8
-    mov rax,4
-    mul r13
+    shl r13,2
+    mov rax,r13
     push r15
     mov r15,rcx
     mov rcx,rax

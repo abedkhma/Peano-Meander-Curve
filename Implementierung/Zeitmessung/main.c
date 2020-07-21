@@ -61,7 +61,7 @@ int main(int argc, char** argv) {
         return 1;
     }
     
-
+    printf("im here");
     double timeAs = endAs.tv_sec - startAs.tv_sec + 1e-9 *
         (endAs.tv_nsec - startAs.tv_nsec);
     

@@ -2,9 +2,8 @@
 CFLAGS=-O2 -g
 LDLIBS = -lm
 all: cimp 
-main: cimp.c peano.c
+main: cimp.c peano.h
 	$(CC) $(CFLAGS)   -o $@
 clean:
-	rm -f main
+	rm -f cimp
 
-#-no-pie : non representable section output

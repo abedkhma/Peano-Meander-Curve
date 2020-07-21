@@ -20,13 +20,11 @@ u_int64_t findPoint(long i,u_int64_t degree,u_int64_t *x, u_int64_t *y);
 
 void peano_meander(u_int64_t degree, u_int64_t *x, u_int64_t *y)
 {
-    long counter = 0; //r10
     long i=0; //r11
-    int val; //112
+    u_int64_t val; //112
     int n; //r13
-    int wanted;
     int numOfPoints = pow(3,(2*degree));
-    for (long c= -1; c <numOfPoints-1; c++) {
+    for (u_int64_t c= 0; c <numOfPoints; c++) {
         val = i;
         n = 0;
         while ((val & 0x8) > 0) { 
