@@ -15,10 +15,20 @@ int main(int argc, char** argv) {
     //--------------------------Start-Checking-Right-Input-----------------------------
     // check whether it becomes a number when calling it
     if (argc != 2) {
-        printf("add number please\n");
+        printf("For running the program, please write ./main <parameter>\n");
+        printf("The parameter must be between 1 and 8 (included)\n");
+        printf("Once the program is done, you will find a new file called graph.svg in the same folder.\n");
+        printf("Please open the graph.svg in firefox for best experience.\n");
+        exit (EXIT_FAILURE);
+    }
+    if (strcmp(argv[1],"-h") == 0 || strcmp(argv[1],"--help") == 0)
+    {
+        printf("For running the program, please write ./main <parameter>\n");
+        printf("The parameter must be between 1 and 8 (included)\n");
+        printf("Once the program is done, you will find a new file called graph.svg in the same folder.\n");
+        printf("Please open the graph.svg in firefox for best experience.\n");
         return 1;
     }
-    
     int n = atoi(argv[1]);
     if (n<1 || n>8){
         printf("The number must be between 1 and 8 (included)\n");

@@ -12,7 +12,7 @@ peano_meander:
     cmp rdi,1
     je onlyfirst
     push rbx
-    //pushing the calee saved registers cause i used them
+ //pushing the calee saved registers cause i used them
     mov r14,3 //calculating how many time to loop
     mov rax,rdi
     shl rax,1
