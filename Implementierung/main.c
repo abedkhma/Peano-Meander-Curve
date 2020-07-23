@@ -61,7 +61,6 @@ int main(int argc, char** argv) {
     u_int64_t tempx1,tempy1,tempx2,tempy2;
     for (int i = 0;i<squares-1;i++)
     {
-    
     tempx1 = x[i]*(900/sqrtpoints) * -1;
     tempy1 =y[i]*(900/sqrtpoints) * -1;
     tempx2 =x[i+1]*(900/sqrtpoints) * -1;
