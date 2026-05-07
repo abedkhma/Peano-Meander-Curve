@@ -3,21 +3,16 @@
 A university project developed at the **Technical University of Munich (TU Munich)**  
 as part of the *Praktikum Rechnerarchitektur (ERA)* course — Task A215 (Image Processing).
 
-The program generates space-filling **Peano-Meander Curves** of a specified degree  
-and outputs them as an **SVG file**.
+The program generates space-filling **Peano-Meander Curves** of a specified degree and outputs them as an **SVG file**.
 
 ---
 
 ## What is a Peano-Meander Curve?
 
-A Peano-Meander Curve is a planar, space-filling curve that passes through every corner  
-of a unit square. Through an iterative process, curves of higher degrees (n=1..8) can be  
-constructed from the base curve. The output is a connected sequence of (x, y) coordinates  
-rendered as an SVG line drawing.
-
-### Example Output (n=3)
+A Peano-Meander Curve is a planar, space-filling curve that passes through every corner of a unit square. Through an iterative process, curves of higher degrees (n=1..8) can be constructed from the base curve. The output is a connected sequence of (x, y) coordinates rendered as an SVG line drawing.
 
 <img src="examples_n3.png" width="300" alt="Peano-Meander Curve n=3"/>
+
 ---
 
 ## Tech Stack
@@ -44,20 +39,16 @@ rendered as an SVG line drawing.
 | `Implementierung/Vergleich/cimp.c` | Reference implementation in C for benchmarking |
 | `Implementierung/Zeitmessung/main.c` | Performance benchmarking |
 | `README.md` | This file |
+
 ---
 
 ## How to Run
 
-## ⚠️ Platform Note
-
-This project uses **x86-64 Assembly** (Intel syntax) and only runs on **64-bit Linux (x86-64)**.  
-It will **not** compile or run on ARM-based systems (e.g. Apple M1/M2) natively.  
-Use Docker to run it on non-x86 machines:
-
-```bash
-docker run --platform linux/amd64 -it -v $(pwd):/project ubuntu:22.04 bash -c \
-  "apt-get update -q && apt-get install -y -q gcc make && cd /project && make && ./main 3"
-```
+> ⚠️ **Platform Note:** This project uses **x86-64 Assembly** and only runs on **64-bit Linux (x86-64)**. It will not compile on ARM systems (e.g. Apple M1/M2) natively. Use Docker instead:
+> ```bash
+> docker run --platform linux/amd64 -it -v $(pwd):/project ubuntu:22.04 bash -c \
+>   "apt-get update -q && apt-get install -y -q gcc make && cd /project && make && ./main 3"
+> ```
 
 **Step 1 — Compile**
 ```bash
@@ -96,7 +87,6 @@ firefox graph.svg
 
 ---
 
-## Author
 ## Team
 
 This project was developed as a group project by a team of 3 students at TU Munich:
