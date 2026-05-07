@@ -17,8 +17,7 @@ rendered as an SVG line drawing.
 
 ### Example Output (n=3)
 
-![Peano-Meander Curve n=3](examples_n3.png)
-
+<img src="examples_n3.png" width="400" alt="Peano-Meander Curve n=3"/>
 ---
 
 ## Tech Stack
@@ -35,19 +34,16 @@ rendered as an SVG line drawing.
 ---
 
 ## Project Structure
-Implementierung/
-├── peanoM.S          # Core Peano-Meander algorithm in x86-64 Assembly
-├── main.c            # C framework: input validation, SVG output, memory management
-├── Makefile          # Build configuration
-├── peano.sh          # Helper script
-├── Vergleich/        # Reference C implementation for benchmarking
-│   ├── cimp.c
-│   └── peano.h
-└── Zeitmessung/      # Benchmarking / performance measurement
-└── main.c
-Ausarbeitung/         # Written report (LaTeX)
-Vortrag/              # Presentation slides (PDF)
 
+| File/Folder | Description |
+|---|---|
+| `Implementierung/peanoM.S` | Core algorithm in x86-64 Assembly (Intel syntax) |
+| `Implementierung/main.c` | C framework: input validation, SVG output, memory management |
+| `Implementierung/Makefile` | Build configuration |
+| `Implementierung/peano.sh` | Helper shell script |
+| `Implementierung/Vergleich/cimp.c` | Reference implementation in C for benchmarking |
+| `Implementierung/Zeitmessung/main.c` | Performance benchmarking |
+| `README.md` | This file |
 ---
 
 ## How to Run
