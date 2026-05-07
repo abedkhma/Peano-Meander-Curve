@@ -48,6 +48,17 @@ rendered as an SVG line drawing.
 
 ## How to Run
 
+## ⚠️ Platform Note
+
+This project uses **x86-64 Assembly** (Intel syntax) and only runs on **64-bit Linux (x86-64)**.  
+It will **not** compile or run on ARM-based systems (e.g. Apple M1/M2) natively.  
+Use Docker to run it on non-x86 machines:
+
+```bash
+docker run --platform linux/amd64 -it -v $(pwd):/project ubuntu:22.04 bash -c \
+  "apt-get update -q && apt-get install -y -q gcc make && cd /project && make && ./main 3"
+```
+
 **Step 1 — Compile**
 ```bash
 cd Implementierung
