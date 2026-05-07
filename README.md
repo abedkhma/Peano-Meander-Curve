@@ -17,7 +17,7 @@ rendered as an SVG line drawing.
 
 ### Example Output (n=3)
 
-<img src="examples_n3.png" width="400" alt="Peano-Meander Curve n=3"/>
+<img src="examples_n3.png" width="300" alt="Peano-Meander Curve n=3"/>
 ---
 
 ## Tech Stack
