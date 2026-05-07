@@ -15,6 +15,10 @@ of a unit square. Through an iterative process, curves of higher degrees (n=1..8
 constructed from the base curve. The output is a connected sequence of (x, y) coordinates  
 rendered as an SVG line drawing.
 
+### Example Output (n=3)
+
+![Peano-Meander Curve n=3](examples_n3.png)
+
 ---
 
 ## Tech Stack
