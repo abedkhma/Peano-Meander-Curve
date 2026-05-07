@@ -11,6 +11,8 @@ The program generates space-filling **Peano-Meander Curves** of a specified degr
 
 A Peano-Meander Curve is a planar, space-filling curve that passes through every corner of a unit square. Through an iterative process, curves of higher degrees (n=1..8) can be constructed from the base curve. The output is a connected sequence of (x, y) coordinates rendered as an SVG line drawing.
 
+ **Example Output**
+
 <img src="examples_n3.png" width="300" alt="Peano-Meander Curve n=3"/>
 
 ---
